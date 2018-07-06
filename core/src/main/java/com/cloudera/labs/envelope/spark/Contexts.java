@@ -147,7 +147,7 @@ public enum Contexts {
       String applicationName = config.getString(APPLICATION_NAME_PROPERTY);
       sparkConf.setAppName(applicationName);
     }
-
+    sparkConf.set("spark.testing.memory", "2147480000");
     if (mode.equals(ExecutionMode.STREAMING)) {
       // Dynamic allocation should not be used for Spark Streaming jobs because the latencies
       // of the resource requests are too long.

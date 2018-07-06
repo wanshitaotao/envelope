@@ -44,8 +44,9 @@ public class TranslateFunction<K, V> implements FlatMapFunction<Tuple2<K, V>, Ro
   @SuppressWarnings("unchecked")
   @Override
   public Iterator<Row> call(Tuple2<K, V> keyAndValue) throws Exception {
-    K key = keyAndValue._1;
-    V value = keyAndValue._2;
+    K key = keyAndValue._1();
+    V value = keyAndValue._2();
+
     
     if (translator == null) {
       translator = (Translator<K, V>)TranslatorFactory.create(config);
